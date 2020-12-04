@@ -1,0 +1,6 @@
+add_user:
+  path: /user/add
+  controller: App\Action\AddUser
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
