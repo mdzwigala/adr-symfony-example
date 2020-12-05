@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\ParamConverter;
 
 use App\Infrastructure\ParamConverter\InputFactory\InputFactory;
+use App\Infrastructure\ParamConverter\InputFactory\InputFactoryProvider;
 use App\Infrastructure\Validator\DataValidator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
@@ -15,9 +16,12 @@ final class InputParamConverter implements ParamConverterInterface
 
     private InputFactory $inputFactory;
 
-    public function __construct(DataValidator $validator)
+    private InputFactoryProvider $inputFactoryProvider;
+
+    public function __construct(DataValidator $validator, InputFactoryProvider $inputFactoryProvider)
     {
         $this->validator = $validator;
+        $this->inputFactoryProvider = $inputFactoryProvider;
     }
 
     public function apply(Request $request, ParamConverter $configuration)
@@ -31,9 +35,8 @@ final class InputParamConverter implements ParamConverterInterface
 
     public function supports(ParamConverter $configuration): bool
     {
-        $inputFactoryClass = $configuration->getOptions()['inputFactory'];
-        $this->inputFactory = new $inputFactoryClass;
+        $this->inputFactory = $this->inputFactoryProvider->getFactory($configuration->getClass());
 
-        return $configuration->getClass() === $this->inputFactory->supportedInput();
+        return true;
     }
 }

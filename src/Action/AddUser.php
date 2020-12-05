@@ -22,11 +22,7 @@ final class AddUser
     }
 
     /**
-     * @ParamConverter(
-     *     converter="converter.action_input",
-     *     options={"inputFactory": "App\Infrastructure\ParamConverter\InputFactory\AddUserInputFactory"},
-     *     name="input"
-     *     )
+     * @ParamConverter(converter="converter.action_input", name="input")
      */
     public function __invoke(AddUserInput $input): AddUserOutput
     {

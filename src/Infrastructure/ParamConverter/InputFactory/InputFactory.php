@@ -7,9 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 interface InputFactory
 {
-    public function __construct();
-
     public function createFromRequest(Request $request): object;
 
-    public function supportedInput(): string;
+    public static function supportedInput(): string;
 }

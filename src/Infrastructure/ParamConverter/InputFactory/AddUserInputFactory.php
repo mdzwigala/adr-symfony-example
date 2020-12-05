@@ -8,10 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class AddUserInputFactory implements InputFactory
 {
-    public function __construct()
-    {
-    }
-
     public function createFromRequest(Request $request): AddUserInput
     {
         return new AddUserInput(
@@ -20,7 +16,7 @@ final class AddUserInputFactory implements InputFactory
         );
     }
 
-    public function supportedInput(): string
+    public static function supportedInput(): string
     {
         return AddUserInput::class;
     }
