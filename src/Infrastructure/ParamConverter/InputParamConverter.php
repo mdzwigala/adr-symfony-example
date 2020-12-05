@@ -8,6 +8,7 @@ use App\Infrastructure\ParamConverter\InputFactory\InputFactoryProvider;
 use App\Infrastructure\Validator\DataValidator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 
 final class InputParamConverter implements ParamConverterInterface
@@ -35,7 +36,11 @@ final class InputParamConverter implements ParamConverterInterface
 
     public function supports(ParamConverter $configuration): bool
     {
-        $this->inputFactory = $this->inputFactoryProvider->getFactory($configuration->getClass());
+        try {
+            $this->inputFactory = $this->inputFactoryProvider->getFactory($configuration->getClass());
+        } catch (ServiceNotFoundException $e) {
+            return false;
+        }
 
         return true;
     }
