@@ -12,7 +12,7 @@ final class DataValidationException extends HttpException
 
     public function __construct(array $errorMessages)
     {
-        parent::__construct(Response::HTTP_UNPROCESSABLE_ENTITY, 'Data Validation Exception');
+        parent::__construct(Response::HTTP_UNPROCESSABLE_ENTITY, 'Data Validation Exception: ' . json_encode($errorMessages));
         $this->errors = $errorMessages;
     }
 

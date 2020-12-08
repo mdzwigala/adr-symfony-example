@@ -16,6 +16,14 @@ final class AddUserInputFactory implements InputFactory
         );
     }
 
+    public function createFromData(string $email, $password): AddUserInput
+    {
+        return new AddUserInput(
+            $email,
+            $password
+        );
+    }
+
     public static function supportedInput(): string
     {
         return AddUserInput::class;
