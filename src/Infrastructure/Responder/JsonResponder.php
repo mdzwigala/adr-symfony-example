@@ -5,7 +5,6 @@ namespace App\Infrastructure\Responder;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 final class JsonResponder
@@ -13,12 +12,9 @@ final class JsonResponder
     private const SUPPORTED_CONTENT_TYPE = 'json';
     private SerializerInterface $serializer;
 
-    private RouterInterface $router;
-
-    public function __construct(SerializerInterface $serializer, RouterInterface $router)
+    public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
-        $this->router = $router;
     }
 
     public function __invoke(ViewEvent $viewEvent): void
