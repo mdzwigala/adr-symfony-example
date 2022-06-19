@@ -9,11 +9,8 @@ use App\Domain\Service\PasswordEncoder;
 
 final class UserFactory
 {
-    private PasswordEncoder $passwordEncoder;
-
-    public function __construct(PasswordEncoder $passwordEncoder)
+    public function __construct(private readonly PasswordEncoder $passwordEncoder)
     {
-        $this->passwordEncoder = $passwordEncoder;
     }
     public function fromAddUserInput(AddUserInput $input): User
     {

@@ -7,11 +7,8 @@ use App\Domain\Service\PasswordEncoder;
 
 final class Md5PasswordEncoder implements PasswordEncoder
 {
-    private string $salt;
-
-    public function __construct(string $salt)
+    public function __construct(private readonly string $salt)
     {
-        $this->salt = $salt;
     }
 
     public function encode(string $password): string

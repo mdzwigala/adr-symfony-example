@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 final class AddUser
 {
-    public function __construct(private Users $users, private UserFactory $userFactory)
+    public function __construct(private readonly Users $users, private readonly UserFactory $userFactory)
     {
     }
 

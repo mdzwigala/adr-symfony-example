@@ -9,14 +9,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class SymfonyValidator implements DataValidator
 {
-    private ValidatorInterface $validator;
-
-    private SymfonyViolationListConverter $converter;
-
-    public function __construct(ValidatorInterface $validator, SymfonyViolationListConverter $converter)
+    public function __construct(private readonly ValidatorInterface $validator, private readonly SymfonyViolationListConverter $converter)
     {
-        $this->validator = $validator;
-        $this->converter = $converter;
     }
     public function validate($data): void
     {

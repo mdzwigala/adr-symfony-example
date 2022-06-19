@@ -9,11 +9,8 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 final class TableConsoleResponder implements ConsoleResponder
 {
-    private NormalizerInterface $normalizer;
-
-    public function __construct(NormalizerInterface $normalizer)
+    public function __construct(private readonly NormalizerInterface $normalizer)
     {
-        $this->normalizer = $normalizer;
     }
     public function __invoke(OutputInterface $output, $data): void
     {

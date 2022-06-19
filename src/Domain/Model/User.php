@@ -5,16 +5,13 @@ namespace App\Domain\Model;
 
 final class User
 {
-    private string $email;
-
     private string $encodedPassword;
 
-    private string $id;
+    private readonly string $id;
 
-    public function __construct(string $email, string $encodedPassword)
+    public function __construct(private readonly string $email, string $encodedPassword)
     {
         $this->id = uniqid();
-        $this->email = $email;
         $this->changePassword($encodedPassword);
     }
 

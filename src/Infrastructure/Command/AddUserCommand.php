@@ -19,26 +19,14 @@ final class AddUserCommand extends Command
     private const EMAIL = 'email';
     private const PASSWORD = 'password';
 
-    private AddUser $addUser;
-
-    private AddUserInputFactory $inputFactory;
-
-    private DataValidator $validator;
-
-    private ConsoleResponder $consoleResponder;
-
     public function __construct(
-        DataValidator $validator,
-        AddUser $addUser,
-        AddUserInputFactory $inputFactory,
-        ConsoleResponder $consoleResponder
+        private readonly DataValidator $validator,
+        private readonly AddUser $addUser,
+        private readonly AddUserInputFactory $inputFactory,
+        private readonly ConsoleResponder $consoleResponder
     )
     {
         parent::__construct();
-        $this->addUser = $addUser;
-        $this->inputFactory = $inputFactory;
-        $this->validator = $validator;
-        $this->consoleResponder = $consoleResponder;
     }
 
     protected function configure()
