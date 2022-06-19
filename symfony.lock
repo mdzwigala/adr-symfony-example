@@ -42,7 +42,7 @@
         ]
     },
     "symfony-bundles/json-request-bundle": {
-        "version": "v3.1.1"
+        "version": "4.1.2"
     },
     "symfony/cache": {
         "version": "v5.2.0"
@@ -121,9 +121,6 @@
             "src/Kernel.php"
         ]
     },
-    "symfony/http-client-contracts": {
-        "version": "v2.3.1"
-    },
     "symfony/http-foundation": {
         "version": "v5.2.0"
     },
@@ -137,12 +134,6 @@
         "version": "v1.20.0"
     },
     "symfony/polyfill-mbstring": {
-        "version": "v1.20.0"
-    },
-    "symfony/polyfill-php73": {
-        "version": "v1.20.0"
-    },
-    "symfony/polyfill-php80": {
         "version": "v1.20.0"
     },
     "symfony/routing": {
