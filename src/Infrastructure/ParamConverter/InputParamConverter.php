@@ -26,6 +26,8 @@ final class InputParamConverter implements ParamConverterInterface
         $this->validator->validate($input);
 
         $request->attributes->set($configuration->getName(), $input);
+        return true;
+
     }
 
     public function supports(ParamConverter $configuration): bool
