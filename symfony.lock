@@ -38,9 +38,6 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "symfony-bundles/json-request-bundle": {
-        "version": "4.1.2"
-    },
     "symfony/cache": {
         "version": "v5.2.0"
     },
