@@ -15,7 +15,7 @@ final class AddUser
     {
     }
 
-    #[ParamConverter(converter: 'converter.action_input', class:AddUserInput::class)]
+    #[ParamConverter('input', converter: 'converter.action_input')]
     public function __invoke(AddUserInput $input): AddUserOutput
     {
         $user = $this->userFactory->fromAddUserInput($input);

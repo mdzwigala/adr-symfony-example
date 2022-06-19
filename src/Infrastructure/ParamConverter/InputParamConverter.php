@@ -25,7 +25,7 @@ final class InputParamConverter implements ParamConverterInterface
         $this->inputFactoryProvider = $inputFactoryProvider;
     }
 
-    public function apply(Request $request, ParamConverter $configuration)
+    public function apply(Request $request, ParamConverter $configuration): bool
     {
         $input = $this->inputFactory->createFromRequest($request);
 
