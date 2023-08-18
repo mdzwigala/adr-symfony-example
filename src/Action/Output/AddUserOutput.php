@@ -5,11 +5,8 @@ namespace App\Action\Output;
 
 final class AddUserOutput
 {
-    private string $userId;
-
-    public function __construct(string $userId)
+    public function __construct(private readonly string $userId)
     {
-        $this->userId = $userId;
     }
 
     public function getUserId(): string

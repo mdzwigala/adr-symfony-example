@@ -11,19 +11,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 final class AddUser
 {
-    private Users $users;
-
-    private UserFactory $userFactory;
-
-    public function __construct(Users $users, UserFactory $userFactory)
+    public function __construct(private readonly Users $users, private readonly UserFactory $userFactory)
     {
-        $this->users = $users;
-        $this->userFactory = $userFactory;
     }
 
-    /**
-     * @ParamConverter(converter="converter.action_input", name="input")
-     */
+    #[ParamConverter('input', converter: 'converter.action_input')]
     public function __invoke(AddUserInput $input): AddUserOutput
     {
         $user = $this->userFactory->fromAddUserInput($input);

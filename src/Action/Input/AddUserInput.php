@@ -7,16 +7,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class AddUserInput
 {
-    /** @Assert\NotBlank() */
-    private string $email;
-
-    /** @Assert\Length(min=6) */
-    private string $password;
-
-    public function __construct(string $email, string $password)
+    public function __construct(
+        #[Assert\NotBlank] private readonly string $email,
+        #[Assert\Length(min: 6)] private readonly string $password
+    )
     {
-        $this->email = $email;
-        $this->password = $password;
     }
 
     public function getEmail(): string

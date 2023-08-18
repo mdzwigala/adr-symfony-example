@@ -7,11 +7,8 @@ use Symfony\Component\DependencyInjection\ServiceLocator;
 
 final class ServiceLocatorInputFactoryProvider implements InputFactoryProvider
 {
-    private ServiceLocator $serviceLocator;
-
-    public function __construct(ServiceLocator $serviceLocator)
+    public function __construct(private readonly ServiceLocator $serviceLocator)
     {
-        $this->serviceLocator = $serviceLocator;
     }
 
     public function getFactory(string $className): InputFactory

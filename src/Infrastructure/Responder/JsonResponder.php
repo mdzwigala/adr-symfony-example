@@ -10,11 +10,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 final class JsonResponder
 {
     private const SUPPORTED_CONTENT_TYPE = 'json';
-    private SerializerInterface $serializer;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(private readonly SerializerInterface $serializer)
     {
-        $this->serializer = $serializer;
     }
 
     public function __invoke(ViewEvent $viewEvent): void

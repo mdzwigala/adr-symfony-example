@@ -13,32 +13,28 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class InputParamConverter implements ParamConverterInterface
 {
-    private DataValidator $validator;
-
     private InputFactory $inputFactory;
 
-    private InputFactoryProvider $inputFactoryProvider;
-
-    public function __construct(DataValidator $validator, InputFactoryProvider $inputFactoryProvider)
+    public function __construct(private readonly DataValidator $validator, private readonly InputFactoryProvider $inputFactoryProvider)
     {
-        $this->validator = $validator;
-        $this->inputFactoryProvider = $inputFactoryProvider;
     }
 
-    public function apply(Request $request, ParamConverter $configuration)
+    public function apply(Request $request, ParamConverter $configuration): bool
     {
         $input = $this->inputFactory->createFromRequest($request);
 
         $this->validator->validate($input);
 
         $request->attributes->set($configuration->getName(), $input);
+        return true;
+
     }
 
     public function supports(ParamConverter $configuration): bool
     {
         try {
             $this->inputFactory = $this->inputFactoryProvider->getFactory($configuration->getClass());
-        } catch (ServiceNotFoundException $e) {
+        } catch (ServiceNotFoundException) {
             return false;
         }
 
